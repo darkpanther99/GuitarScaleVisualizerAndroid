@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">GuitarScaleVisualizer</string>
+    <string name="scalename">Name</string>
+    <string name="tuningname">Name</string>
+    <string name="tvStringText">How many strings does it have?</string>
+    <string name="tvInstrumentText">Choose your instrument!</string>
+    <string name="tvFretText">How many frets does it have?</string>
+    <string name="tvFlatorSharpText">Would you like to use flats or sharps?</string>
+    <string name="tvTuningText">Choose a Tuning!</string>
+    <string name="ScaleFretButtonText">Choose scale and Fretboard</string>
+    <string name="save_settings">Save settings</string>
+    <string name="load_settings">Load settings</string>
+    <string name="bonus">Bonus</string>
+    <string name="choose_a_scale">Choose a Scale!</string>
+    <string name="done">Done</string>
+
+
+    <string-array name="instruments">
+        <item>Guitar</item>
+        <item>Bass</item>
+    </string-array>
+
+    <string-array name="flatOrSharp">
+        <item>Sharp</item>
+        <item>Flat</item>
+    </string-array>
+
+    <string-array name="modes">
+        <item>Major</item>
+        <item>Dorian</item>
+        <item>Phrygian</item>
+        <item>Lydian</item>
+        <item>Mixolydian</item>
+        <item>Minor</item>
+        <item>Locrian</item>
+        <item>Custom</item>
+    </string-array>
+
+</resources>

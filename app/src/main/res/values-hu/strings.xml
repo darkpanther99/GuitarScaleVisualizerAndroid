@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">GuitarSkálaVizualizátor</string>
+    <string name="scalename">Name</string>
+    <string name="tuningname">Name</string>
+    <string name="tvStringText">Hány húrja van?</string>
+    <string name="tvInstrumentText">Válassz hangszert!</string>
+    <string name="tvFretText">Hány bundos?</string>
+    <string name="tvFlatorSharpText">Fel vagy leszállított hangokat szeretnél?</string>
+    <string name="tvTuningText">Válassz hangolást!</string>
+    <string name="ScaleFretButtonText">Skála és Hangolás választása</string>
+    <string name="save_settings">Adatmentés</string>
+    <string name="load_settings">Adatbetöltés</string>
+    <string name="bonus">Bónusz</string>
+    <string name="choose_a_scale">Válassz skálát!</string>
+    <string name="done">Kész</string>
+
+    <string-array name="instruments">
+        <item>Gitár</item>
+        <item>Basszus</item>
+    </string-array>
+
+    <string-array name="flatOrSharp">
+        <item>Fel</item>
+        <item>Le</item>
+    </string-array>
+
+    <string-array name="modes">
+        <item>Dúr</item>
+        <item>Dór</item>
+        <item>Fríg</item>
+        <item>Líd</item>
+        <item>Mixolíd</item>
+        <item>Moll</item>
+        <item>Lokriszi</item>
+        <item>Custom</item>
+    </string-array>
+</resources>
