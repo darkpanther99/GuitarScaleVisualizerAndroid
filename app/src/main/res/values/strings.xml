@@ -10,7 +10,7 @@
     <string name="ScaleFretButtonText">Choose scale and Fretboard</string>
     <string name="save_settings">Save settings</string>
     <string name="load_settings">Load settings</string>
-    <string name="bonus">Bonus</string>
+    <string name="bonus">Load next</string>
     <string name="choose_a_scale">Choose a Scale!</string>
     <string name="done">Done</string>
 

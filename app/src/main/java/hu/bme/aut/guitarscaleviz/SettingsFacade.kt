@@ -3,16 +3,16 @@ package hu.bme.aut.guitarscaleviz
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import hu.bme.aut.guitarscaleviz.DAL.GuitarDatabase
-import hu.bme.aut.guitarscaleviz.DAL.GuitarSettings
-import hu.bme.aut.guitarscaleviz.DAL.GuitarSettingsDAO
+import hu.bme.aut.guitarscaleviz.DAL.*
+import java.lang.RuntimeException
 import kotlin.concurrent.thread
 
 //Since this facade is singleton, I don't have to make the database singleton, because it will only get instantiated here, once
 object SettingsFacade {
     lateinit var db : GuitarDatabase
     lateinit var settingsDAO : GuitarSettingsDAO
-    var counter = 0 //TODO: store this persistently in a database table, so the counter will initialize to that upon starting the app
+    lateinit var currentDAO : CurrentSelectedGuitarDAO
+    var entityCount = 0
     var current = 1 //SQLite starts counting from 1
 
     fun buildDB(applicationContext: Context){
@@ -23,31 +23,51 @@ object SettingsFacade {
             ).fallbackToDestructiveMigration().build()
 
             settingsDAO = db.GuitarSettingsDAO()
+            currentDAO = db.CurrentSelectedGuitarDAO()
+
         thread{
-            counter = settingsDAO.getAll().size
+            entityCount = settingsDAO.getAll().size
+            current = loadCurrent()
         }
 
     }
 
     fun getLast() : GuitarSettings{
+        if (entityCount == 0) throw RuntimeException("Empty Database!") //TODO exception handling
         val setting =  settingsDAO.getSetting(current)
         return setting
     }
 
     fun getNext() : GuitarSettings{
-        if (current != counter) {
+        if (entityCount == 0) throw RuntimeException("Empty Database!") //TODO exception handling
+        if (current != entityCount) {
             current++
+            saveCurrent()
+
         } else {
             current = 1
+            saveCurrent()
         }
         val setting =  settingsDAO.getSetting(current)
+
 
         return setting
     }
 
     fun insertSetting(setting: GuitarSettings){
         settingsDAO.insertSettings(setting)
-        counter = settingsDAO.getAll().size
+        entityCount = settingsDAO.getAll().size
+    }
+
+    private fun saveCurrent(){
+        currentDAO.upsert(CurrentSelectedGuitar(0, current))
+    }
+
+    private fun loadCurrent():Int{
+        if (entityCount == 0){
+            return 1
+        }
+        return currentDAO.getCurrentSelected().currentNumber
     }
 
 }

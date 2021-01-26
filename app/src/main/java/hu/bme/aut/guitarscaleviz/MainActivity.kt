@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
 
         btnLoad.setOnClickListener {
             thread{
-                val setting = SettingsFacade.getNext()
+                val setting = SettingsFacade.getLast()
                 runOnUiThread {
                     StringNumSpinner.setSelection(stringNums.indexOf(setting.stringNum), true)
                     FretNumSpinner.setSelection(fretNums.indexOf(setting.fretNum), true)
@@ -158,7 +158,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnBonus.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=dQw4w9WgXcQ")))
+            //startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=dQw4w9WgXcQ")))
+            //The original thing this button did was rickrolling people, now it has a better purpose. This line of code is here commented out, to commemorate that.
+            thread{
+                val setting = SettingsFacade.getNext()
+                runOnUiThread {
+                    StringNumSpinner.setSelection(stringNums.indexOf(setting.stringNum), true)
+                    FretNumSpinner.setSelection(fretNums.indexOf(setting.fretNum), true)
+                    InstrumentSpinner.setSelection(englishinstruments.indexOf(setting.instrument), true)
+                }
+
+            }
         }
 
     }
